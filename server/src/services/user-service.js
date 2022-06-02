@@ -25,19 +25,24 @@ class UserService {
     async SignIn(data) {
         const {username, password} = data
         //Check exist data
-        const foundUser = await this.userRepository.FindOneUser(username)
-        if (!foundUser) throw new BadRequestError('Incorrect username or password')
-        if (!await ValidatePassword(password, foundUser.password)) throw new BadRequestError('Incorrect username or password')
+        try {
+            const foundUser = await this.userRepository.FindOneUser(username)
+            if (!foundUser) throw new Error()
+            if (!await ValidatePassword(password, foundUser.password)) throw new Error()
+        } catch (err){
+            throw new BadRequestError('Incorrect username or password')
+        }
+        
+        
         
         //Provide token
         try {
             const user = { username: username }
             const accessToken = await GenerateAccessToken(user)
             const refreshToken = await GenerateRefreshToken(user)
-
-            await this.tokenRepository.CreateToken(refreshToken)
-
-            return FormatData({ accessToken: accessToken, refreshToken: refreshToken })
+            const alreadyRefreshToken = await this.tokenRepository.FindOneToken(refreshToken)
+            if(!alreadyRefreshToken) await this.tokenRepository.CreateToken(refreshToken)
+            return FormatData({ username: username, accessToken: accessToken, refreshToken: refreshToken })
         } catch (err) {
             throw new Api404Error('Data Not Found', err)
         }
