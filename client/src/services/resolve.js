@@ -7,7 +7,8 @@ export const resolve = async (promise) => {
     try {
       resolved.data = await promise;
     } catch(e) {
-      resolved.error = e.response.data;
+      console.log(e)
+      resolved.error = e;
     }
   
     return resolved;

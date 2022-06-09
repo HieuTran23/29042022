@@ -11,7 +11,7 @@ class UserService {
     async SignUp(data) {
         const { username, password, email, firstName, lastName } = data;
 
-        if(this.userRepository.FindOneUser(username)) throw new BadRequestError('username already exists')
+        if(await this.userRepository.FindOneUser(username)) throw new BadRequestError('username already exists')
 
         try {
             const hashPassword = await HashPassword(password)
@@ -30,6 +30,7 @@ class UserService {
             if (!foundUser) throw new Error()
             if (!await ValidatePassword(password, foundUser.password)) throw new Error()
         } catch (err){
+            console.log(err)
             throw new BadRequestError('Incorrect username or password')
         }
         

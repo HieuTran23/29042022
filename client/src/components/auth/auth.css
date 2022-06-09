@@ -63,7 +63,7 @@
 
 .auth-input {
     display: flex;
-    color: var(--color-heavy-brown);
+    color: black;
 }
 
 .auth-input input{
@@ -75,7 +75,7 @@
     font-size: 1rem;
     line-height: 1.1875rem;
     margin-left: 1.625rem;
-    color: var(--color-heavy-brown);
+    color: var(--color-heavy-grey);
 }
 
 .auth-input input:focus{
@@ -119,6 +119,7 @@
 }
 
 .register-description-active{
+    font-weight: 600;
     color: var(--color-heavy-brown);
 }
 

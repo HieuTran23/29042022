@@ -3,7 +3,7 @@ const { STATUS_CODES ,ValidationError, Api404Error } = require('../../../utils/e
 
 
 const loginValidation = async(req, res, next) => {
-    const data = await login.validate(req.body);
+    const data = login.validate(req.body);
     try{
         if (data.error) {
             throw new ValidationError(data.error.details[0].message)
@@ -16,7 +16,7 @@ const loginValidation = async(req, res, next) => {
 }
 
 const signupValidation = async(req, res, next) => {
-    const data = await signup.validate(req.body)
+    const data = signup.validate(req.body)
     try{
         if(data.error) {
             throw new ValidationError(data.error.details[0].message)

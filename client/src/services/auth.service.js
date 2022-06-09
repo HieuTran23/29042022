@@ -1,20 +1,37 @@
 import axios from "axios";
 import { apiUrl } from "./constant";
 import { resolve } from "./resolve";
+import { getLocalRefreshToken, getLocalUser, removeLocalUser, setLocalUser } from "./token.service";
 
 const login = async (userInput) => {
     return await resolve(axios.post(`${apiUrl}/login`, userInput).then(res => {
-        const { refreshToken, username} = res.data
-        localStorage.setItem("user", JSON.stringify({refreshToken, username}));
+        setLocalUser(res.data)
         return res.data
     }));
 }
 
-const logout = () => {
-    return localStorage.removeItem("user")
+const register = async (userInput) => {
+    return await resolve (axios.post(`${apiUrl}/signup`, userInput).then(res => {
+        setLocalUser(res.data)
+        return res.data
+    }))
+}
+
+const logout = async () => {
+    const refreshToken = getLocalRefreshToken()
+    return await resolve(axios.delete(`${apiUrl}/logout`, {data: {refreshToken: refreshToken}}).then(res => {
+        removeLocalUser()
+        return res.data
+    }))
+}
+
+const currentUser = () => {
+    return getLocalUser()
 }
 
 export {
     login,
-    logout
+    logout,
+    register,
+    currentUser
 }

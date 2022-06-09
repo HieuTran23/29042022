@@ -1,6 +1,6 @@
 import './auth.css'
 import React, { useState } from 'react'
-import { useDispatch } from "react-redux";
+import { batch, useDispatch } from "react-redux";
 import Button from '../button/Button'
 import authSlice, { signIn } from "./authSlice";
 import { AiOutlineUser} from 'react-icons/ai'
@@ -25,8 +25,10 @@ const Login = () => {
     } 
 
     const handleRegisterOnclick = () => {
-        dispatch(authSlice.actions.loginBoxChangeStatus())
-        dispatch(authSlice.actions.registerBoxChangeStatus())
+        batch(() => {
+            dispatch(authSlice.actions.loginBoxChangeStatus())
+            dispatch(authSlice.actions.registerBoxChangeStatus())
+        })
     }
 
     const handleLoginFormChange = (event) => {
@@ -50,7 +52,12 @@ const Login = () => {
         dispatch(
             signIn(loginForm)
         ).then((res) => {
-            console.log(res)
+            if(res.payload.error){
+                const errorResponse = res.payload.error.response
+
+                return errorResponse ? setError({...error, message: errorResponse.data.message}) : setError({...error, message: ''})    
+            }
+            return dispatch(authSlice.actions.loginBoxChangeStatus())
         })
     }
 
@@ -65,6 +72,7 @@ const Login = () => {
                 <div className="auth-name-box">
                     <h2 className="auth-name">Login</h2>
                 </div>
+                {error.message && <span className='error-massage'>{error.message}</span>}
                 <form className="auth-form" onSubmit={handleLoginFormSubmit}>
                     <div className="auth-field">
                         <label>Username</label>

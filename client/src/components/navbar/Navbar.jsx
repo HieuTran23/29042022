@@ -1,12 +1,14 @@
 import './navbar.css'
+import { useEffect } from 'react';
 import { logo, logoText } from '../../assets'
 import { useDispatch, useSelector } from "react-redux";
 import { authSlice } from '../slice'
-import { signOut } from '../auth/authSlice';
+import { getCurrentUser, signOut } from '../auth/authSlice';
 import { loginBoxChangeStatusSelector, usernameSelector, registerBoxChangeStatusSelector } from '../../redux/selectors';
 import Register from '../auth/Register';
 import Login from '../auth/Login'
 import { FaSearch, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa'
+
 
 const Navbar = () => {
   const dispatch = useDispatch()
@@ -21,6 +23,10 @@ const Navbar = () => {
   const handleLogoutOnClick = () => {
     dispatch(signOut())
   }
+
+  useEffect(() => {
+    dispatch(getCurrentUser())
+  }, [])
 
   return (
     <div className='navbar'>

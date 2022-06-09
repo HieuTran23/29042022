@@ -32,7 +32,7 @@ const signup = Joi.object({
     email: Joi.string()
         .required()
         .email()
-})
+}).unknown();
 
 module.exports = {
     login,
