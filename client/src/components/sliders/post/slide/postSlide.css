@@ -1,0 +1,122 @@
+.post-slide-container{
+    display: flex;
+}
+
+.slide-image{
+    width: 51.25rem;
+    height: 30rem;
+    background-size: cover;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-position: center center;
+    position: relative;
+
+    -webkit-transition: background-image 0.5s linear;
+}
+
+.button{
+    font-size: 3.75rem;
+    color: white;
+    cursor: pointer;
+
+    transition: all 0.3s ease-in-out;
+}
+
+.button:hover{
+    transform: scale(1.2);
+}
+
+.prev-button{
+    position: absolute;
+    top: 50%;
+    left: 0;
+}
+
+.next-button{
+    position: absolute;
+    top: 50%;
+    right: 0;
+}
+
+.slide-card{
+    flex: 1;
+}
+
+.slide-head{
+    color: var(--color-orange);
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.875rem;
+}
+
+.slide-body{
+    margin-top: 1rem;
+}
+
+.slide-category{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.slide-category::before{
+    content: "";
+    width: 100%;
+    height: 0.125rem;
+    left: 0;
+    top: 0;
+    background-color: var(--color-light-brown);
+}
+
+.slide-category h4{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.1875rem;
+    color: var(--color-heavy-brown);
+}
+
+.slide-title{
+    margin-top: 1rem;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.37500rem;
+    line-height: 1.62500rem;
+}
+
+.slide-summary{
+    margin-top: 1rem;
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.12500rem;
+    line-height: 1.3125rem;
+    color: var(--color-grey);
+}
+
+.slide-bottom{
+    margin-top: 1rem;
+}
+
+.slide-link-to{
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 900;
+    font-size: 1rem;
+    line-height: 1.1875rem;
+    color: var(--color-heavy-brown);
+    position: relative;
+}
+
+.slide-link-to::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 0.080625rem;
+    top: 1rem;
+    background-color: var(--color-heavy-brown);
+}

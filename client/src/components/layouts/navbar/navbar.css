@@ -2,6 +2,7 @@
     display: flex;
     height: 3.75rem;
     background-color: var(--color-white);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 .navbar-container{

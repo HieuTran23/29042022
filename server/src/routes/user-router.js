@@ -2,8 +2,8 @@ const { UserController } = require('../controllers')
 const { loginValidation, signupValidation } = require('../middleware/validation/auth')
 
 module.exports = (app) => {
-    app.post('/signup', signupValidation, UserController.handleCreateUser)
-    app.post('/login', loginValidation, UserController.handleLogin)
+    app.post('/register', signupValidation, UserController.handleSignUp)
+    app.post('/login', loginValidation, UserController.handleSignIn)
     app.post('/token', UserController.handleToken)
-    app.delete('/logout', UserController.handleLogout)
+    app.delete('/logout', UserController.handleSignOut)
 }

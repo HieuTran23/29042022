@@ -10,8 +10,6 @@ const StartServer = async() => {
 
     await loaderApp(app)
 
-    console.log
-
     app.listen(PORT, () => {
         console.log(`Server run in port ${PORT}`);
     }).on('error', (err) => {

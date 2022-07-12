@@ -1,7 +1,7 @@
 const express = require('express');
 const cors  = require('cors');
 const HandleErrors = require('../middleware/errorHandler')
-const { user, blog } = require('../routes')
+const { user, post, category } = require('../routes')
 
 module.exports = async (app) => {
 
@@ -12,7 +12,8 @@ module.exports = async (app) => {
     
     //Route
     user(app)
-    blog(app)
+    post(app)
+    category(app)
 
     //Error handling
     app.use(HandleErrors)

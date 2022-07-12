@@ -11,7 +11,7 @@ const login = async (userInput) => {
 }
 
 const register = async (userInput) => {
-    return await resolve (axios.post(`${apiUrl}/signup`, userInput).then(res => {
+    return await resolve (axios.post(`${apiUrl}/register`, userInput).then(res => {
         setLocalUser(res.data)
         return res.data
     }))

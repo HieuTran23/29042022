@@ -1,27 +1,27 @@
 const UserService = require('../services/user-service')
 const service = new UserService()
 
-const handleCreateUser = async (req, res, next) => {
+const handleSignUp = async (req, res, next) => {
     try {
-        const data = await service.SignUp(req.body)
+        const data = await service.signUp(req.body)
         return res.json(data)
     } catch (err) {
         next(err)
     }
 }
 
-const handleLogin = async (req, res, next) => {
+const handleSignIn = async (req, res, next) => {
     try { 
-        const data = await service.SignIn(req.body)
+        const data = await service.signIn(req.body)
         return res.json(data)
     } catch (err) {
         next(err)
     }
 }
 
-const handleLogout = async (req, res, next) => {
+const handleSignOut = async (req, res, next) => {
     try {
-        const data = await service.SignOut(req.body)
+        const data = await service.signOut(req.body)
         return res.json(data)
     } catch (err){
         next(err)
@@ -31,7 +31,7 @@ const handleLogout = async (req, res, next) => {
 const handleToken = async (req, res, next) => {
     try {
         const refreshToken = req.body.refreshToken
-        const accessToken = await service.Token(refreshToken)
+        const accessToken = await service.token(refreshToken)
         return res.json(accessToken)
     } catch (err) {
         next(err)
@@ -39,8 +39,8 @@ const handleToken = async (req, res, next) => {
 }
 
 module.exports = {
-    handleCreateUser,
-    handleLogin,
+    handleSignUp,
+    handleSignIn,
     handleToken,
-    handleLogout
+    handleSignOut
 }

@@ -1,23 +1,20 @@
 import './navbar.css'
 import { useEffect } from 'react';
-import { logo, logoText } from '../../assets'
+import { logo, logoText } from '../../../assets'
 import { useDispatch, useSelector } from "react-redux";
-import { authSlice } from '../slice'
-import { getCurrentUser, signOut } from '../auth/authSlice';
-import { loginBoxChangeStatusSelector, usernameSelector, registerBoxChangeStatusSelector } from '../../redux/selectors';
-import Register from '../auth/Register';
-import Login from '../auth/Login'
+import { authSlice } from '../../../redux/slice'
+import { getCurrentUser, signOut } from '../../../redux/auth/auth.slice';
+import { usernameSelector } from '../../../redux/auth/auth.selector';
 import { FaSearch, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa'
-
+import { LOGIN_FORM } from '../../../utils/constants/component.constant';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const dispatch = useDispatch()
-  const isLoginContainer = useSelector(loginBoxChangeStatusSelector)
-  const isRegisterContainer = useSelector(registerBoxChangeStatusSelector)
   const isUsername = useSelector(usernameSelector)
 
   const handleLoginOnclick = () => {
-    dispatch(authSlice.actions.loginBoxChangeStatus(!isLoginContainer))
+    dispatch(authSlice.actions.authContainerChangeStatus(LOGIN_FORM))
   } 
 
   const handleLogoutOnClick = () => {
@@ -38,11 +35,11 @@ const Navbar = () => {
           </div>
           <div className="nav-links-box">
             <ul className="nav-links">
-              <li className="nav-link"><a href="/">Home</a></li>
-              <li className="nav-link"><a href="/Tags">Tags</a></li>
-              <li className="nav-link"><a href="/Categories">Categories</a></li>
-              <li className="nav-link"><a href="/Archives">Archives</a></li>
-              <li className="nav-link"><a href="/About">About</a></li>
+              <li className="nav-link"><Link to="/">Home</Link></li>
+              <li className="nav-link"><Link to="/Tags">Tags</Link></li>
+              <li className="nav-link"><Link to="/Categories">Categories</Link></li>
+              <li className="nav-link"><Link to="/Archives">Archives</Link></li>
+              <li className="nav-link"><Link to="/About">About</Link></li>
             </ul>
           </div>
         </div>
@@ -52,16 +49,6 @@ const Navbar = () => {
             { isUsername ? 
             <li className="nav-tool"><FaSignOutAlt onClick={handleLogoutOnClick}/></li>  :
             <li className="nav-tool"><FaSignInAlt onClick={handleLoginOnclick}/></li> 
-            }
-            {
-              isLoginContainer && (
-                <Login/>
-              )
-            }
-            {
-              isRegisterContainer && (
-                <Register/>
-              )
             }
           </ul>
         </div>

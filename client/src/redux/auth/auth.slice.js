@@ -4,16 +4,17 @@ import { login, logout, currentUser, register } from "../../services/auth.servic
 export default createSlice({
     name: 'auth',
     initialState: {
-        isLoginContainer: false,
-        isRegisterContainer: false,
+        authContainer: {
+            container: ''
+        },
         username: ''
     },
     reducers: {
-        loginBoxChangeStatus: (state) => {
-            state.isLoginContainer = !state.isLoginContainer
+        heightAuthChange: (state, action) => {
+            state.authContainer.heightAuth = action.payload
         },
-        registerBoxChangeStatus: (state) => {
-            state.isRegisterContainer = !state.isRegisterContainer
+        authContainerChangeStatus: (state, action) => {
+            state.authContainer.container = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -42,28 +43,21 @@ export default createSlice({
     }
 })
 
-const signIn = createAsyncThunk('auth/signIn', async(userInput) => {
+export const signIn = createAsyncThunk('auth/signIn', async(userInput) => {
     const res = await login(userInput)
     return res
 })
 
-const signUp = createAsyncThunk('auth/signUp', async(userInput) => {
+export const signUp = createAsyncThunk('auth/signUp', async(userInput) => {
     const res = await register(userInput)
     return res
 })
 
-const getCurrentUser = createAsyncThunk('auth/user', async() => {
+export const getCurrentUser = createAsyncThunk('auth/user', async() => {
     return await currentUser()
 })
 
-const signOut = createAsyncThunk('auth/signOut', async() => {
+export const signOut = createAsyncThunk('auth/signOut', async() => {
     const res = await logout()
     return res
 })
-
-export {
-    signIn,
-    signOut,
-    getCurrentUser,
-    signUp
-}

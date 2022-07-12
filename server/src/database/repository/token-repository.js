@@ -2,7 +2,7 @@ const { TokenModel } = require('../models')
 const { Api404Error, STATUS_CODES} = require('../../utils/errorApp')
 
 class TokenRepository{
-    async CreateToken(refreshToken){
+    async createAccessToken(refreshToken){
         try{
             const token = new TokenModel({
                 token: refreshToken
@@ -16,7 +16,7 @@ class TokenRepository{
         }
     }
 
-    async FindOneToken(refreshToken){
+    async findOneRefreshToken(refreshToken){
         try{
             const foundToken = await TokenModel.findOne({token: refreshToken})
             return foundToken;
@@ -25,7 +25,7 @@ class TokenRepository{
         }
     }
 
-    async DeleteToken(refreshToken){
+    async deleteRefreshToken(refreshToken){
         try{
             await TokenModel.deleteOne({token: refreshToken})
         } catch (err) {

@@ -17,11 +17,11 @@ const ValidatePassword = async (currentPassword, savedPassword) => {
 }
 
 const GenerateAccessToken = (user) => {
-    return jwt.sign(user, ACCESS_TOKEN_SECRET, {expiresIn: '10s'})
+    return jwt.sign(user, ACCESS_TOKEN_SECRET, {expiresIn: /*'1800000s'*/ '15s'})
 }
 
 const GenerateRefreshToken = (user) => {
-    return jwt.sign(user, REFRESH_TOKEN_SECRET)
+    return jwt.sign(user, REFRESH_TOKEN_SECRET,  {expiresIn: '17280000000s'})
 }
 
 const ValidateAccessTokenSignature = (req) => {

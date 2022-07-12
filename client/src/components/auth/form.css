@@ -1,24 +1,23 @@
-.auth{
-    position:absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top:0px;
-    right:0px;
-    bottom:0px;
-    left:0px;
-    background-color: rgba(200, 178, 160, 0.3);
-}
 
-.auth-container{
-    padding: 2.5rem 2.6875rem;
+.auth{
+    margin: 0 0.5rem 0 0.5rem;
+    /* padding: 2.5rem 2.6875rem; */
     background-color: var(--color-white);
     border-radius: 5px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
-    min-width: 28.125rem;
+    height: 41rem;
+    /* max-width: 5rem; */
     position: relative;
     z-index: 1;
+    cursor: pointer;
 }
+
+/* 
+.auth-active{
+    min-width: 28.125rem;
+    cursor:auto;
+    display: block;
+} */
 
 .close-box{
     padding-right: inherit;
@@ -32,6 +31,10 @@
     align-items: center;
     justify-content: center;
 }
+
+/* .auth-name-box-active{
+    transform: rotate(0deg);
+} */
 
 .auth-name-box h2{
     font-weight: 700;

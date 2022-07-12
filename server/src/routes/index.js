@@ -1,4 +1,5 @@
 module.exports = {
     user: require('./user-router'),
-    blog: require('./blog-router')
+    post: require('./post-router'),
+    category: require('./category-router')
 }

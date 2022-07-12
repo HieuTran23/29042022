@@ -1,9 +1,9 @@
 const { UserModel} = require('../models')
-const { Api404Error, BadRequestError, STATUS_CODES} = require('../../utils/errorApp')
+const { Api404Error, STATUS_CODES} = require('../../utils/errorApp')
 
 
 class UserRepository {
-    async CreateUser({ username, password, email, firstName, lastName}){   
+    async create({ username, password, email, firstName, lastName}){   
         try{
             const user = new UserModel({
                 username,
@@ -21,9 +21,18 @@ class UserRepository {
         }
     }
 
-    async FindOneUser(username){
+    async findOne({username}){
         try{
             const foundUser = await UserModel.findOne({ username: username});
+            return foundUser;
+        } catch (err) {
+            throw Api404Error('Api Error', STATUS_CODES.INTERNAL_ERROR, 'Cannot find user')
+        }
+    }
+
+    async findOneAndRemovePassword({username}){
+        try{
+            const foundUser = await UserModel.findOne({ username: username}, '-password');
             return foundUser;
         } catch (err) {
             throw Api404Error('Api Error', STATUS_CODES.INTERNAL_ERROR, 'Cannot find user')

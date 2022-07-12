@@ -1,5 +1,5 @@
 const { UserRepository, TokenRepository } = require('../database')
-const { Api404Error, NotFoundError, BadRequestError } = require('../utils/errorApp')
+const { Api404Error, BadRequestError } = require('../utils/errorApp')
 const { RefreshAccessToken, FormatData, ValidatePassword, GenerateAccessToken, GenerateRefreshToken, HashPassword } = require('../utils')
 
 class UserService {
@@ -8,65 +8,62 @@ class UserService {
         this.tokenRepository = new TokenRepository();
     }
 
-    async SignUp(data) {
+    async signUp(data) {
         const { username, password, email, firstName, lastName } = data;
 
-        if(await this.userRepository.FindOneUser(username)) throw new BadRequestError('username already exists')
+        if(await this.userRepository.findOne({username})) throw new BadRequestError('username already exists')
 
         try {
             const hashPassword = await HashPassword(password)
-            const createdUser = await this.userRepository.CreateUser({ username, password: hashPassword, email, firstName, lastName })
+            const createdUser = await this.userRepository.create({ username, password: hashPassword, email, firstName, lastName })
             return FormatData({ createdUser })
         } catch (err) {
             throw new Api404Error('Data Not Found', err)
         }
     }
 
-    async SignIn(data) {
+    async signIn(data) {
         const {username, password} = data
+        
         //Check exist data
         try {
-            const foundUser = await this.userRepository.FindOneUser(username)
+            const foundUser = await this.userRepository.findOne({username})
             if (!foundUser) throw new Error()
             if (!await ValidatePassword(password, foundUser.password)) throw new Error()
         } catch (err){
-            console.log(err)
             throw new BadRequestError('Incorrect username or password')
         }
-        
-        
         
         //Provide token
         try {
             const user = { username: username }
             const accessToken = await GenerateAccessToken(user)
             const refreshToken = await GenerateRefreshToken(user)
-            const alreadyRefreshToken = await this.tokenRepository.FindOneToken(refreshToken)
-            if(!alreadyRefreshToken) await this.tokenRepository.CreateToken(refreshToken)
+            const alreadyRefreshToken = await this.tokenRepository.findOneRefreshToken(refreshToken)
+            if(!alreadyRefreshToken) await this.tokenRepository.createAccessToken(refreshToken)
             return FormatData({ username: username, accessToken: accessToken, refreshToken: refreshToken })
         } catch (err) {
             throw new Api404Error('Data Not Found', err)
         }
     }
 
-    async SignOut(data) {
+    async signOut(data) {
         const { refreshToken } = data
         //Check exist token
-        if(!await this.tokenRepository.FindOneToken(refreshToken)) return FormatData(null)
+        if(!await this.tokenRepository.findOneRefreshToken(refreshToken)) return FormatData(null)
 
         try {
-            await this.tokenRepository.DeleteToken(refreshToken)
+            await this.tokenRepository.deleteRefreshToken(refreshToken)
             return FormatData({message: 'log out'})
         } catch (err) {
             throw new Api404Error('Data Not Found', err)
         }
     }
 
-    async Token(refreshToken) {
-        if (!await this.tokenRepository.FindOneToken(refreshToken)) return FormatData(null)
+    async token(refreshToken) {
+        if (!await this.tokenRepository.findOneRefreshToken(refreshToken)) return FormatData(null)
 
         try {
-            
             const accessToken = await RefreshAccessToken(refreshToken)
             return FormatData({accessToken})
         }
