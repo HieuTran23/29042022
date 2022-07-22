@@ -5,4 +5,4 @@ export const apiUrl =
 
 export const NEWEST = 'newest'
 export const FIND_NEWEST_POST_NUMBER = 8
-export const FIND_HOME_POST_NUMBER = 2
+export const FIND_HOME_POST_NUMBER = 5

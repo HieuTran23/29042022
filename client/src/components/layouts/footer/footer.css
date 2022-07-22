@@ -1,0 +1,48 @@
+.footer{
+    height: 19.0625rem;
+    margin-top: 2.5rem;
+    background-color: white;
+    display: flex;
+}
+
+.footer .footer-container{
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer .logo-box{
+    display: flex;
+    flex-direction: column;
+}
+
+.footer .logo{
+    width: 13.4375rem;
+    height: 10.0625rem;
+}
+
+.footer .logo-text{
+    margin-top: 1rem;
+    width: 8.9375rem;
+    height: 3.5625rem;
+}
+
+.footer .info-box{
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.4375rem;
+
+    color: var(--color-heavy-grey);
+}
+
+.footer .link-list{
+    display: flex;
+    align-items: center;
+}
+
+.footer .link-item{
+    font-size: 2rem;
+    color: var(--color-heavy-grey);
+    margin-left: 0.8rem;
+}

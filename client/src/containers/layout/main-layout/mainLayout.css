@@ -1,0 +1,14 @@
+.main{
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-main{
+    flex: 1;
+    margin-right: 0.625rem;
+}
+
+.right-main{
+    flex: 1;
+    margin-left: 0.625rem;
+}

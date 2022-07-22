@@ -1,5 +1,5 @@
 const { TokenModel } = require('../models')
-const { Api404Error, STATUS_CODES} = require('../../utils/errorApp')
+const { BadRequestError} = require('../../utils/errorApp')
 
 class TokenRepository{
     async createAccessToken(refreshToken){
@@ -12,7 +12,7 @@ class TokenRepository{
 
             return createdToken;
         } catch (err){
-            throw new Api404Error('API Error', STATUS_CODES.INTERNAL_ERROR, 'Cannot create new token')
+            return new BadRequestError('Cannot create new token')
         }
     }
 
@@ -21,7 +21,7 @@ class TokenRepository{
             const foundToken = await TokenModel.findOne({token: refreshToken})
             return foundToken;
         } catch (err) {
-            throw new Api404Error('API Error', STATUS_CODES.INTERNAL_ERROR, 'Cannot find the token')
+            return new BadRequestError('Cannot find the token')
         }
     }
 
@@ -29,7 +29,7 @@ class TokenRepository{
         try{
             await TokenModel.deleteOne({token: refreshToken})
         } catch (err) {
-            throw new Api404Error('API Error', STATUS_CODES.INTERNAL_ERROR, 'Cannot delete the token')
+            return new BadRequestError('Cannot delete the token')
         }
     }
 }

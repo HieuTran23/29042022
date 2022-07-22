@@ -88,3 +88,60 @@
 {"level":"error","message":"Wed Jul 13 2022 00:23:04 GMT+0700 (Indochina Time)-{\"name\":\"Data not found\",\"statusCode\":{},\"isOperational\":true}","private":true}
 {"level":"error","message":"Wed Jul 13 2022 00:26:13 GMT+0700 (Indochina Time)-{\"name\":\"Data not found\",\"statusCode\":{},\"isOperational\":true}","private":true}
 {"level":"error","message":"Wed Jul 13 2022 00:26:50 GMT+0700 (Indochina Time)-{\"name\":\"Data not found\",\"statusCode\":{\"name\":\"NOT FOUND\",\"statusCode\":404,\"isOperational\":true,\"errorStack\":\"Data Not Found\"},\"isOperational\":true}","private":true}
+{"level":"error","message":"Wed Jul 13 2022 19:21:19 GMT+0700 (Indochina Time)-{}","private":true}
+{"level":"error","message":"Wed Jul 13 2022 19:22:07 GMT+0700 (Indochina Time)-{\"expose\":true,\"statusCode\":400,\"status\":400,\"body\":\"{\\r\\n    \\\"subName\\\": \\\"Sub-Category 3 (update)\\\",\\r\\n    \\\"subDescription\\\": \\\"This is sub-category 3 (update)\\\",\\r\\n}\",\"type\":\"entity.parse.failed\"}","private":true}
+{"level":"error","message":"Wed Jul 13 2022 19:22:11 GMT+0700 (Indochina Time)-{}","private":true}
+{"level":"error","message":"Wed Jul 13 2022 19:24:01 GMT+0700 (Indochina Time)-{}","private":true}
+{"level":"error","message":"Wed Jul 13 2022 19:24:17 GMT+0700 (Indochina Time)-{}","private":true}
+{"level":"error","message":"Wed Jul 13 2022 20:29:35 GMT+0700 (Indochina Time)-{\"name\":\"Data not found\",\"statusCode\":{},\"isOperational\":true}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 13:24:18 GMT+0700 (Indochina Time)-{\"name\":\"Data not found\",\"statusCode\":{},\"isOperational\":true}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 13:24:38 GMT+0700 (Indochina Time)-{}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 13:25:03 GMT+0700 (Indochina Time)-{\"name\":\"Data not found\",\"statusCode\":{},\"isOperational\":true}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 13:25:18 GMT+0700 (Indochina Time)-{}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 13:25:42 GMT+0700 (Indochina Time)-{\"name\":\"Data not found\",\"statusCode\":{},\"isOperational\":true}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 17:31:49 GMT+0700 (Indochina Time)-{\"name\":\"Data not found\",\"statusCode\":{},\"isOperational\":true}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 17:32:24 GMT+0700 (Indochina Time)-{}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 17:33:07 GMT+0700 (Indochina Time)-{}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 17:34:12 GMT+0700 (Indochina Time)-{}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 17:35:07 GMT+0700 (Indochina Time)-{\"name\":\"NOT FOUND\",\"statusCode\":400,\"isOperational\":true,\"errorStack\":\"Hello\"}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 17:53:58 GMT+0700 (Indochina Time)-{\"name\":\"Data not found\",\"statusCode\":{},\"isOperational\":true}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 17:54:47 GMT+0700 (Indochina Time)-{\"name\":\"Data not found\",\"statusCode\":{},\"isOperational\":true}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 17:59:24 GMT+0700 (Indochina Time)-{\"name\":\"Data not found\",\"statusCode\":{\"name\":\"NOT FOUND\",\"statusCode\":400,\"isOperational\":true,\"errorStack\":\"Hello\"},\"isOperational\":true}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 18:20:30 GMT+0700 (Indochina Time)-{\"name\":\"Data not found\",\"statusCode\":{},\"isOperational\":true}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 18:21:07 GMT+0700 (Indochina Time)-{\"name\":\"Data not found\",\"statusCode\":{},\"isOperational\":true}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 18:21:39 GMT+0700 (Indochina Time)-{\"name\":\"Data not found\",\"statusCode\":{\"index\":0,\"code\":11000,\"keyPattern\":{\"name\":1},\"keyValue\":{\"name\":\"tag 1\"}},\"isOperational\":true}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 18:23:12 GMT+0700 (Indochina Time)-{}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 18:24:07 GMT+0700 (Indochina Time)-{}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 18:25:34 GMT+0700 (Indochina Time)-{}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 18:25:41 GMT+0700 (Indochina Time)-{}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 18:26:26 GMT+0700 (Indochina Time)-{}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 18:27:44 GMT+0700 (Indochina Time)-{\"name\":\"DATA NOT FOUND\",\"statusCode\":500,\"isOperational\":false,\"errorStack\":\"Data not found\"}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 18:28:08 GMT+0700 (Indochina Time)-{\"name\":\"DATA NOT FOUND\",\"statusCode\":500,\"isOperational\":false,\"errorStack\":{\"index\":0,\"code\":11000,\"keyPattern\":{\"name\":1},\"keyValue\":{\"name\":\"tag 1\"}}}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 18:37:25 GMT+0700 (Indochina Time)-{\"name\":\"DATA NOT FOUND\",\"statusCode\":500,\"isOperational\":false,\"errorStack\":{\"index\":0,\"code\":11000,\"keyPattern\":{\"name\":1},\"keyValue\":{\"name\":\"tag 1\"}}}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 18:37:27 GMT+0700 (Indochina Time)-{\"name\":\"DATA NOT FOUND\",\"statusCode\":500,\"isOperational\":false,\"errorStack\":{\"index\":0,\"code\":11000,\"keyPattern\":{\"name\":1},\"keyValue\":{\"name\":\"tag 1\"}}}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 19:46:34 GMT+0700 (Indochina Time)-{\"name\":\"DATA NOT FOUND\",\"statusCode\":500,\"isOperational\":false,\"errorStack\":{}}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 19:46:39 GMT+0700 (Indochina Time)-{\"name\":\"DATA NOT FOUND\",\"statusCode\":500,\"isOperational\":false,\"errorStack\":{}}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 19:48:37 GMT+0700 (Indochina Time)-{\"name\":\"DATA NOT FOUND\",\"statusCode\":500,\"isOperational\":false,\"errorStack\":{}}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 19:49:20 GMT+0700 (Indochina Time)-{\"name\":\"DATA NOT FOUND\",\"statusCode\":500,\"isOperational\":false,\"errorStack\":{}}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 19:52:37 GMT+0700 (Indochina Time)-{\"name\":\"DATA NOT FOUND\",\"statusCode\":500,\"isOperational\":false}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 19:53:01 GMT+0700 (Indochina Time)-{\"name\":\"DATA NOT FOUND\",\"statusCode\":500,\"isOperational\":false}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 19:55:02 GMT+0700 (Indochina Time)-{\"name\":\"DATA NOT FOUND\",\"statusCode\":500,\"isOperational\":false}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 19:56:00 GMT+0700 (Indochina Time)-{\"name\":\"DATA NOT FOUND\",\"statusCode\":500,\"isOperational\":false}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 19:57:13 GMT+0700 (Indochina Time)-{\"name\":\"DATA NOT FOUND\",\"statusCode\":500,\"isOperational\":false}","private":true}
+{"level":"error","message":"Thu Jul 14 2022 19:57:43 GMT+0700 (Indochina Time)-{\"name\":\"DATA NOT FOUND\",\"statusCode\":500,\"isOperational\":false}","private":true}
+{"level":"error","message":"Fri Jul 15 2022 13:00:15 GMT+0700 (Indochina Time)-{\"name\":\"DATA NOT FOUND\",\"statusCode\":500,\"isOperational\":false,\"errorStack\":{}}","private":true}
+{"level":"error","message":"Fri Jul 15 2022 13:00:48 GMT+0700 (Indochina Time)-{\"name\":\"DATA NOT FOUND\",\"statusCode\":500,\"isOperational\":false,\"errorStack\":{}}","private":true}
+{"level":"error","message":"Fri Jul 15 2022 13:03:13 GMT+0700 (Indochina Time)-{\"name\":\"DATA NOT FOUND\",\"statusCode\":500,\"isOperational\":false,\"errorStack\":{}}","private":true}
+{"level":"error","message":"Fri Jul 15 2022 13:03:36 GMT+0700 (Indochina Time)-{\"name\":\"DATA NOT FOUND\",\"statusCode\":500,\"isOperational\":false,\"errorStack\":{}}","private":true}
+{"level":"error","message":"Fri Jul 15 2022 16:47:19 GMT+0700 (Indochina Time)-{\"name\":\"BAD REQUEST\",\"statusCode\":400,\"isOperational\":true,\"errorStack\":\"\\\"email\\\" is required\"}","private":true}
+{"level":"error","message":"Sat Jul 16 2022 21:30:49 GMT+0700 (Indochina Time)-{\"name\":\"DATA NOT FOUND\",\"statusCode\":500,\"isOperational\":false,\"errorStack\":{}}","private":true}
+{"level":"error","message":"Sat Jul 16 2022 21:34:59 GMT+0700 (Indochina Time)-{\"name\":\"DATA NOT FOUND\",\"statusCode\":500,\"isOperational\":false,\"errorStack\":{}}","private":true}
+{"level":"error","message":"Sat Jul 16 2022 21:35:15 GMT+0700 (Indochina Time)-{\"name\":\"DATA NOT FOUND\",\"statusCode\":500,\"isOperational\":false,\"errorStack\":{}}","private":true}
+{"level":"error","message":"Sat Jul 16 2022 21:38:22 GMT+0700 (Indochina Time)-{\"name\":\"DATA NOT FOUND\",\"statusCode\":500,\"isOperational\":false,\"errorStack\":{}}","private":true}
+{"level":"error","message":"Sun Jul 17 2022 00:46:17 GMT+0700 (Indochina Time)-{\"name\":\"NOT FOUND\",\"statusCode\":400,\"isOperational\":true,\"errorStack\":\"Incorrect username or password\"}","private":true}
+{"level":"error","message":"Sun Jul 17 2022 00:46:28 GMT+0700 (Indochina Time)-{\"name\":\"NOT FOUND\",\"statusCode\":400,\"isOperational\":true,\"errorStack\":\"Incorrect username or password\"}","private":true}
+{"level":"error","message":"Sun Jul 17 2022 00:46:35 GMT+0700 (Indochina Time)-{\"name\":\"NOT FOUND\",\"statusCode\":400,\"isOperational\":true,\"errorStack\":\"Incorrect username or password\"}","private":true}
+{"level":"error","message":"Tue Jul 19 2022 19:39:57 GMT+0700 (Indochina Time)-{\"name\":\"NOT FOUND\",\"statusCode\":404,\"isOperational\":true,\"errorStack\":\"Data Not Found\"}","private":true}
+{"level":"error","message":"Tue Jul 19 2022 19:43:14 GMT+0700 (Indochina Time)-{\"name\":\"BAD REQUEST\",\"statusCode\":400,\"isOperational\":true,\"errorStack\":\"\\\"firstName\\\" is not allowed to be empty\"}","private":true}
+{"level":"error","message":"Wed Jul 20 2022 21:04:02 GMT+0700 (Indochina Time)-{\"name\":\"BAD REQUEST\",\"statusCode\":400,\"isOperational\":true,\"errorStack\":\"\\\"username\\\" is not allowed to be empty\"}","private":true}
+{"level":"error","message":"Wed Jul 20 2022 21:10:56 GMT+0700 (Indochina Time)-{\"name\":\"BAD REQUEST\",\"statusCode\":400,\"isOperational\":true,\"errorStack\":\"\\\"username\\\" is not allowed to be empty\"}","private":true}

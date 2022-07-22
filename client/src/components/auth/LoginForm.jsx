@@ -99,16 +99,19 @@ const LoginForm = ({handleCloseAuthOnclick}) => {
                     <li><a href="/reset-password">Forgot Password?</a> </li>
                 </ul>
             </div>                
-            <Button type='submit' buttonStyle='btn-submit-auth' buttonSize='btn-overside-auth'>
+            <button type='submit' className='btn-submit-auth'>
                 Login
-            </Button>
+            </button>
         </motion.form>
         </>
     )
 
+    const active = authContainer.container === LOGIN_FORM ? null : 'true'
+
     return (
         <motion.div
             className="auth"
+            data-active = {active}
             style = {{
                 // height: authContainer.container === LOGIN_CONTAINER ? '40rem' : authContainer.heightAuth,
                 display: 'block',
@@ -144,9 +147,9 @@ const LoginForm = ({handleCloseAuthOnclick}) => {
                             delay: 0.7
                         }}    
                     >
-                        <Button type='button' buttonStyle='btn-none' buttonSize='btn-large' onClick={handleCloseAuthOnclick}>
+                        <button type='button' className='btn-none' onClick={handleCloseAuthOnclick}>
                             <GrClose/>
-                        </Button>
+                        </button>
                     </motion.div>
                 }
                 <motion.div 

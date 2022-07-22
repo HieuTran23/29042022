@@ -1,12 +1,18 @@
 import React from 'react'
+import './home.css'
 import { NewPostSlides, Posts } from '../../containers'
+import Sidebar from '../layout/sidebar/Sidebar'
+import MainLayout from '../layout/main-layout/MainLayout'
 
 const Home = () => {
   return (
-    <div className='section-margin'>
+    <MainLayout>
       <NewPostSlides/>
-      <Posts/>
-    </div>
+      <div className='section-margin-top-small body-container'>
+        <Posts/>
+        <Sidebar/>
+      </div>
+    </MainLayout>
   )
 }
 

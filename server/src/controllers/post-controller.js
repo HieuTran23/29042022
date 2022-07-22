@@ -3,10 +3,10 @@ const FindPostFactory = require('./post/find')
 const service = new PostService()
 
 const handleCreate = async (req, res, next) => {
-    const {title, metaTitle, content, summary, links, files, image} = req.body
+    const {title, metaTitle, content, summary, links, files, image, subCategoryId, tagIds} = req.body
     
     try{
-        const data = await service.create({title, metaTitle, content, summary, links, files, image, username: req.user.username})
+        const data = await service.create({title, metaTitle, content, summary, links, files, image, username: req.user.username, subCategoryId, tagIds})
         return res.json(data)
     } catch (err) {
         next(err)
@@ -47,6 +47,8 @@ const handleFindOneAndDelete = async (req, res, next) => {
         next(err)
     }
 }
+
+
 
 module.exports  = {
     handleCreate,

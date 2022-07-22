@@ -1,6 +1,6 @@
 const { CategoryRepository } = require("../database");
 const { FormatData } = require("../utils");
-const { Api404Error, BadRequestError } = require("../utils/errorApp");
+const { Api404Error } = require("../utils/errorApp");
 
 class CategoryService{
     constructor() {
@@ -8,22 +8,22 @@ class CategoryService{
     }
 
     async create(data){
-        const { name, description} = data
+        const { name, description, isActive} = data
 
         try {
-            const createdCategory = await this.categoryRepository.create({name, description})
+            const createdCategory = await this.categoryRepository.create({name, description, isActive})
             return FormatData({createdCategory})
         } catch (err) {
-            throw new Api404Error('Data not found', err)
+            throw new Api404Error(err)
         }
     }
 
     async find(){
         try{
-            const foundCategory = await this.categoryRepository.find()
-            return FormatData({foundCategory})
+            const foundCategories = await this.categoryRepository.find()
+            return FormatData({foundCategories})
         } catch(err) {
-            throw new Api404Error('Data not found', err)
+            throw new Api404Error(err)
         }
     }
 
@@ -34,18 +34,29 @@ class CategoryService{
             const foundCategory = await this.categoryRepository.findById({ categoryId})
             return FormatData({foundCategory})
         } catch(err) {
-            throw new Api404Error('Data not found', err)
+            throw new Api404Error(err)
         }
     }
 
     async updateById(data){
-        const { categoryId, name, description} = data
+        const { categoryId, name, description, isActive} = data
 
         try {
-            const updatedCategory = await this.categoryRepository.update({ categoryId, name, description})
+            const updatedCategory = await this.categoryRepository.update({ categoryId, name, description, isActive})
             return FormatData({updatedCategory})
         } catch(err) {
-            throw new Api404Error('Data not found', err)
+            throw new Api404Error(err)
+        }
+    }
+
+    async updateActive(data){
+        const { categoryId, isActive} = data
+
+        try {
+            const updatedCategory = await this.categoryRepository.updateActive({ categoryId, isActive})
+            return FormatData({updatedCategory})
+        } catch (err) {
+            throw new Api404Error(err)
         }
     }
 
@@ -56,42 +67,62 @@ class CategoryService{
             const deletedCategory = await this.categoryRepository.deleteById({ categoryId})
             return FormatData({ deletedCategory})
         } catch (err) {
-            throw new Api404Error('Data not found', err)
+            throw new Api404Error(err)
         }
     }
 
     async createSubCategory(data) {
-        const { categoryId, subName, subDescription} = data
+        const { categoryId, subName, subDescription, isSubActive} = data
 
         try {
-            const createdSubCategory = await this.categoryRepository.createSubCategory({ categoryId, subName, subDescription})
+            const createdSubCategory = await this.categoryRepository.createSubCategory({ categoryId, subName, subDescription, isSubActive})
             return FormatData({ createdSubCategory})
         } catch (err) {
-            throw new Api404Error('Data not found', err)
+            throw new Api404Error(err)
         }
     }
 
-    async updateSubCategory(data){
-        const { categoryId, subCategoryId, subName, subDescription} = data
-
+    async findAllWithPostNumber(){
         try {
-            const updatedSubCategory = await this.categoryRepository.updateSubCategory({ categoryId, subCategoryId, subName, subDescription})
-            return FormatData({ updatedSubCategory})
+            const foundCategories = await this.categoryRepository.findAllWithPostNumber()
+            return FormatData({foundCategories})
         } catch (err) {
-            throw new Api404Error('Data not found', err)
+            throw new Api404Error(err)
         }
     }
 
-    async deleteSubCategory(data){
-        const {categoryId, subCategoryId} = data
+    // async updateSubCategory(data){
+    //     const { categoryId, subCategoryId, subName, subDescription, isSubActive} = data
 
-        try {
-            const deletedSubCategory = await this.categoryRepository.deleteSubCategory({ categoryId, subCategoryId})
-            return FormatData({ deletedSubCategory})
-        } catch(err){
-            throw new Api404Error('Data not found', err)
-        }
-    }
+    //     try {
+    //         const updatedSubCategory = await this.categoryRepository.updateSubCategory({ categoryId, subCategoryId, subName, subDescription, isSubActive})
+    //         return FormatData({ updatedSubCategory})
+    //     } catch (err) {
+    //         throw new Api404Error(err)
+    //     }
+    // }
+
+    // async updatedSubCategoryActive(data) {
+    //     const {categoryId, subCategoryId, isSubActive} = data
+
+    //     try {
+    //         const updatedSubCategory = await this.categoryRepository.updateSubCategoryActive({ categoryId, subCategoryId, isSubActive})
+    //         return FormatData({ updatedSubCategory})
+    //     } catch (err) {
+    //         throw new Api404Error(err)
+    //     }
+    // }
+
+    // async deleteSubCategory(data){
+    //     const {categoryId, subCategoryId} = data
+
+    //     try {
+    //         const deletedSubCategory = await this.categoryRepository.deleteSubCategory({ categoryId, subCategoryId})
+    //         return FormatData({ deletedSubCategory})
+    //     } catch(err){
+    //         throw new Api404Error(err)
+    //     }
+    // }
 }
 
 module.exports = CategoryService

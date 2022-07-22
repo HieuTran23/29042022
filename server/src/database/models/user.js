@@ -14,16 +14,34 @@ const UserSchema = new mongoose.Schema({
         min: 6,
         max: 1024
     },
-    fullName: {
-        firstName: {
-            type: String
+    role:{
+        type: Number,
+        default: 0,
+        require: true
+    },
+    subPermissionIds: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'subPermission'
+    }],
+    profile:{
+        fullName: {
+            firstName: String,
+            lastName: String
         },
-        lastName: {
-            type: String
+        description: String,
+        contact: {
+            address: {
+                street: String,
+                city: String,
+                country: String
+            },
+            phone: String,
+            email: String
         }
     },
-    email: {
-        type: String
+    isActive: {
+        type: Boolean,
+        default: true
     },
     createdAt: {
         type: Date,

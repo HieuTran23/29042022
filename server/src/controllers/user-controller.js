@@ -38,7 +38,18 @@ const handleToken = async (req, res, next) => {
     }
 }
 
+//Admin
+const handleCreate = async (req, res, next) => {
+    try {
+        const data = await service.create(req.body)
+        return res.json(data)
+    } catch (err) {
+        next (err)
+    }
+}
+
 module.exports = {
+    handleCreate,
     handleSignUp,
     handleSignIn,
     handleToken,

@@ -45,8 +45,8 @@ class NotFoundError extends BaseError {
 
 //500 Specific Errors
 class Api404Error extends BaseError {
-    constructor(name, statusCode = STATUS_CODES.INTERNAL_ERROR, description ='Internal Server Error',isOperational = true,){
-        super(name,statusCode,description,isOperational);
+    constructor(errorStack){
+        super('DATA NOT FOUND', STATUS_CODES.INTERNAL_ERROR, 'Internal Server Error', false, errorStack);
     }
 }
 module.exports = {

@@ -5,27 +5,7 @@
     transition: .2s ease-in-out 0s;
 }
 
-.btn-none{
-    border-width: 0;
-    background-color: white;
-}
-
 .btn-large{
     font-size: 1.4375rem;
-}
-
-.btn-submit-auth{
-    margin: 2.5rem 0 1.25rem 0;
-    background: linear-gradient(90deg, #ADA9A6, #A68474 100%);
-    width: 100%;
-    border-radius: 50px;
-    min-height: 3.125rem;
-    border-width: 0;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 1rem;
-    line-height: 1.1875rem;
-    color: var(--color-white);
-    transition: 1s ease-in-out ;
 }
 

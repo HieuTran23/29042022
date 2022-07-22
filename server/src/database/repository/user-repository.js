@@ -1,41 +1,52 @@
 const { UserModel} = require('../models')
-const { Api404Error, STATUS_CODES} = require('../../utils/errorApp')
+const { BadRequestError} = require('../../utils/errorApp')
 
-
+ 
 class UserRepository {
-    async create({ username, password, email, firstName, lastName}){   
+    async create(create){
+        const { username, password, role, firstName, lastName, email} = create
+
         try{
             const user = new UserModel({
                 username,
                 password,
-                email,
-                fullName: {
-                    firstName,
-                    lastName
+                role,
+                profile: {
+                    fullName: {
+                        firstName: firstName,
+                        lastName: lastName
+                    },
+                    contact: {
+                        email: email
+                    }
                 }
             })
             const createdUser = await user.save();
             return createdUser;
         } catch(err){
-            throw Api404Error('Api Error', STATUS_CODES.INTERNAL_ERROR, 'Cannot create new user')
+            return new BadRequestError('Cannot create new user')
         }
     }
 
-    async findOne({username}){
+    async findOne(filter){
+        const {username} = filter
+
         try{
             const foundUser = await UserModel.findOne({ username: username});
             return foundUser;
         } catch (err) {
-            throw Api404Error('Api Error', STATUS_CODES.INTERNAL_ERROR, 'Cannot find user')
+            return new BadRequestError('Cannot find user')
         }
     }
 
-    async findOneAndRemovePassword({username}){
+    async findOneAndRemovePassword(filter){
+        const {username} = filter
+
         try{
             const foundUser = await UserModel.findOne({ username: username}, '-password');
             return foundUser;
         } catch (err) {
-            throw Api404Error('Api Error', STATUS_CODES.INTERNAL_ERROR, 'Cannot find user')
+            return new BadRequestError('Cannot find user')
         }
     }
 }

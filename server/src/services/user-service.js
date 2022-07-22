@@ -8,17 +8,19 @@ class UserService {
         this.tokenRepository = new TokenRepository();
     }
 
-    async signUp(data) {
-        const { username, password, email, firstName, lastName } = data;
-
-        if(await this.userRepository.findOne({username})) throw new BadRequestError('username already exists')
+    //User
+    async signUp(create) {
+        const { username, password, firstName, lastName, email } = create;
 
         try {
+            //Check User
+            if (await this.userRepository.findOne({username})) return new BadRequestError('username already exists')
+
             const hashPassword = await HashPassword(password)
             const createdUser = await this.userRepository.create({ username, password: hashPassword, email, firstName, lastName })
             return FormatData({ createdUser })
         } catch (err) {
-            throw new Api404Error('Data Not Found', err)
+            throw new Api404Error(err)
         }
     }
 
@@ -43,7 +45,7 @@ class UserService {
             if(!alreadyRefreshToken) await this.tokenRepository.createAccessToken(refreshToken)
             return FormatData({ username: username, accessToken: accessToken, refreshToken: refreshToken })
         } catch (err) {
-            throw new Api404Error('Data Not Found', err)
+            throw new Api404Error(err)
         }
     }
 
@@ -56,7 +58,7 @@ class UserService {
             await this.tokenRepository.deleteRefreshToken(refreshToken)
             return FormatData({message: 'log out'})
         } catch (err) {
-            throw new Api404Error('Data Not Found', err)
+            throw new Api404Error(err)
         }
     }
 
@@ -68,7 +70,20 @@ class UserService {
             return FormatData({accessToken})
         }
         catch (err) {
-            throw new Api404Error('Data Not Found', err)
+            throw new Api404Error(err)
+        }
+    }
+
+    //Admin 
+    async create(create) {
+        const { username, password, role, firstName, lastName, email } = create;
+
+        try {
+            const hashPassword = await HashPassword(password)
+            const createdUser = await this.userRepository.create({username, password: hashPassword, role, firstName, lastName, email})
+            return FormatData({createdUser})
+        } catch (err) {
+            throw new Api404Error(err)
         }
     }
 }

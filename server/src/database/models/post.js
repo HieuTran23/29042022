@@ -11,8 +11,9 @@ const PostSchema = new mongoose.Schema({
         max: 100
     },
     userId: {
-        type: mongoose.Types.ObjectId,
-        ref: 'user'
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user',
+        required: true
     },
     content: {
         type: String
@@ -44,7 +45,19 @@ const PostSchema = new mongoose.Schema({
     isActive: {
         type: Boolean,
         default: true,
-    }
+    },
+    isVIP: {
+        type: Boolean,
+        default: false
+    },
+    subCategoryId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'subCategory'
+    },
+    tagIds: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'tag'
+    }]
 },
 { timestamps: true })
 

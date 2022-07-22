@@ -25,7 +25,7 @@ class Newest extends Base{
 
     async find() {
         try {
-            const data = await service.findNewest({number: this.number})
+            const data = await service.find({number: this.number, page: 1})
             return data
         } catch (err){
             console.log(err)

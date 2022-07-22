@@ -1,0 +1,11 @@
+.body-container{
+    display: flex;
+    width: 77.4375rem;
+    justify-content: space-between;
+}
+
+.side-bar{
+    display: flex;
+    flex-direction: column;
+    width: 18.5rem;
+}

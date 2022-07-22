@@ -1,0 +1,41 @@
+
+.tag-card-number {
+    margin-top: 0.875rem;
+    background: rgba(233, 231, 224, 0.3);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+}
+
+.tag-card-number .tag-name{
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 0.875rem;
+    padding: 0 0.35rem 0 0.35rem;
+    color: var(--color-heavy-grey);
+}
+
+.tag-card-number .posts-number{
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 0.875rem;
+    padding: 0.2rem 0.35rem 0.2rem 0.35rem;
+    background: rgba(200, 178, 160, 0.3);
+    color: var(--color-heavy-grey);
+}
+
+.tag-card{
+    border-radius: 3px;
+    margin-right: 0.2rem;
+    background-color: var(--color-heavy-brown);
+    display: flex;
+    align-items: center;
+}
+
+.tag-card .tag-name{
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 0.875rem;
+    padding: 0.15rem 0.35rem 0.15rem 0.35rem;
+    color: white;
+}

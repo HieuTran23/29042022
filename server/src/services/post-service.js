@@ -8,15 +8,15 @@ class PostService{
         this.userRepository = new UserRepository();
     }
 
-    async create(data) {
-        const {title, metaTitle, content, summary, links, files, image, username} = data
+    async create(create) {
+        const {title, metaTitle, content, summary, links, files, image, username, subCategoryId, tagIds} = create
 
         try {
             const user = await this.userRepository.findOneAndRemovePassword({username})
-            const createdPost = await this.postRepository.create({title, metaTitle, userId: user._id, content, summary, links, files, image})
+            const createdPost = await this.postRepository.create({title, metaTitle, userId: user._id, content, summary, links, files, image, subCategoryId, tagIds})
             return FormatData({createdPost})
         } catch (err){
-            throw new Api404Error('Data Not Found', err)
+            throw new Api404Error(err)
         }
     }
 
@@ -26,7 +26,7 @@ class PostService{
             const foundPosts = await this.postRepository.find({number, page})
             return FormatData({foundPosts, pages: Math.ceil(countPosts / number)})
         } catch (err){
-            throw new Api404Error('Data Not Found', err)
+            throw new Api404Error(err)
         }
     }
 
@@ -35,7 +35,7 @@ class PostService{
             const foundNewestPosts = await this.postRepository.findNewestAndLimit({number})
             return FormatData({foundNewestPosts})
         } catch(err){
-            throw new Api404Error('Data Not Found', err)
+            throw new Api404Error(err)
         }
     }
 
@@ -46,7 +46,7 @@ class PostService{
             const foundPost = await this.postRepository.findOne({postId})
             return FormatData({ posts: foundPost })
         } catch (err) {
-            throw new Api404Error('Data Not Found', err)
+            throw new Api404Error(err)
         }
     }
 
@@ -67,7 +67,7 @@ class PostService{
             const deletedPost = await this.postRepository.findOneAndDelete({postId})
             return FormatData({ deletedPost})
         } catch(err){
-            throw new Api404Error('Data Not Found', err)
+            throw new Api404Error(err)
         }
     }
 }

@@ -139,9 +139,9 @@ const RegisterForm = ({handleCloseAuthOnclick}) => {
                 </div>
                 {error.email && <span className='error-massage'>{error.email}</span>}
             </div>         
-            <Button type="button" buttonStyle='btn-submit-auth' buttonSize='btn-overside-auth' onClick={handleContinueRegisterOnClick}>
+            <button type="button" className='btn-submit-auth'  onClick={handleContinueRegisterOnClick}>
                 Continue to sign up
-            </Button>
+            </button>
         </>
                 
     )
@@ -181,9 +181,9 @@ const RegisterForm = ({handleCloseAuthOnclick}) => {
                     <li className="decoration" onClick={handleContinueRegisterOnClick}>Back</li>
                 </ul>
             </div>                
-            <Button type='submit' buttonStyle='btn-submit-auth' buttonSize='btn-overside-auth'>
+            <button type='submit' className='btn-submit-auth'>
                 Sign Up
-            </Button>
+            </button>
         </>
     )
 
@@ -259,9 +259,12 @@ const RegisterForm = ({handleCloseAuthOnclick}) => {
         </>
     )
 
+    const active = authContainer.container === REGISTER_FORM ? null : 'true'
+                
     return (
         <motion.div 
             className = 'auth'
+            data-active = {active}
             style = {{
                 height: authContainer.container === REGISTER_FORM ? '' : authContainer.heightAuth,
                 display: 'block',
@@ -298,9 +301,9 @@ const RegisterForm = ({handleCloseAuthOnclick}) => {
                             delay: 0.7
                         }} 
                     >
-                        <Button type='button' buttonStyle='btn-none' buttonSize='btn-large' onClick={handleCloseAuthOnclick}>
+                        <button type='button' className='btn-none' onClick={handleCloseAuthOnclick}>
                             <GrClose/>
-                        </Button>
+                        </button>
                     </motion.div>
                 }
                 <motion.div 

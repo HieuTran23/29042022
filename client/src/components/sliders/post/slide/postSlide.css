@@ -10,8 +10,6 @@
     border-bottom-right-radius: 5px;
     background-position: center center;
     position: relative;
-
-    -webkit-transition: background-image 0.5s linear;
 }
 
 .button{
@@ -119,4 +117,19 @@
     height: 0.080625rem;
     top: 1rem;
     background-color: var(--color-heavy-brown);
+}
+
+.slide-tag{
+    display: flex;
+}
+
+.slide-tag p {
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 0.875rem;
+    padding: 0.15rem 0.35rem 0.15rem 0.35rem;
+    border-radius: 3px;
+    margin-right: 0.2rem;
+    background-color: var(--color-heavy-brown);
+    color: white;
 }

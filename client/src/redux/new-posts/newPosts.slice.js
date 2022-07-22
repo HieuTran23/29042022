@@ -21,6 +21,18 @@ export default createSlice({
                     updatedAt: "",
                     userId: "Eagle blog",
                     _id: "Eagle blog",
+                    category: {
+                        _id: "Eagle blog",
+                        name: "Eagle blog",
+                    },
+                    subCategory: {
+                        _id: "Eagle blog",
+                        subName: "Eagle blog",
+                    },
+                    tags: [{
+                        _id: "Eagle blog",
+                        name: "Eagle blog",
+                    }]
                 }
             ],
             slideIndex: 0
@@ -40,7 +52,7 @@ export default createSlice({
         builder.addCase(getPosts.fulfilled, (state, action) => {
             const {data} = action.payload
             if(data) {
-                state.postSlides.posts = data.foundNewestPosts
+                state.postSlides.posts = data.foundPosts
             }
         })
     }

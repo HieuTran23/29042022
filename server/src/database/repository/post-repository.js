@@ -1,8 +1,10 @@
 const { PostModel } = require('../models')
-const { Api404Error, STATUS_CODES } = require('../../utils/errorApp')
+const { BadRequestError } = require('../../utils/errorApp')
 
 class PostRepository{
-    async create({ title, metaTitle, userId, content, summary, links, files, image}){
+    async create(create){
+        const { title, metaTitle, userId, content, summary, links, files, image, subCategoryId, tagIds} = create
+
         try{
             const post = new PostModel({
                 title,
@@ -14,21 +16,116 @@ class PostRepository{
                     image,
                     links,
                     files
-                }
+                },
+                subCategoryId,
+                tagIds
             })
             const createdPost = await post.save();
             return createdPost;
         } catch(err){
-            throw Api404Error('Api Error', STATUS_CODES.INTERNAL_ERROR, 'Cannot create new post')
+            return new BadRequestError('Cannot create new post')
         }
     }
 
     async find({number, page}){
         try{
-            const foundPosts = await PostModel.find().skip((number * page) - number).limit(number);
+            // const foundPosts = await PostModel.find().skip((number * page) - number).limit(number);
+            const foundPosts = await PostModel.aggregate([
+                {
+                    $lookup: {
+                        from: 'users',
+                        localField: 'userId',
+                        foreignField: '_id',
+                        as: 'user'
+                    }
+                },
+                {
+                    $unwind: '$user'
+                },
+                {
+                    $lookup: {
+                        from: 'subcategories',
+                        localField: 'subCategoryId',
+                        foreignField: '_id',
+                        as: 'subCategory'
+                    }
+                }, {
+                    $unwind: '$subCategory'
+                }, {
+                    $lookup: {
+                        from: 'categories',
+                        localField: 'subCategory.categoryId',
+                        foreignField: '_id',
+                        as: 'category'
+                    }
+                }, {
+                    $unwind: '$category'
+                }, {
+                    $unwind: '$tagIds'
+                }, {
+                    $lookup: {
+                        from: 'tags',
+                        localField: 'tagIds',
+                        foreignField: '_id',
+                        as: 'tags'
+                    }
+                }, {
+                    $unwind: '$tags'
+                },{
+                    $group: {
+                        _id: '$_id',
+                        title: {
+                            $first: '$title'
+                        },
+                        metaTitle: {
+                            $first: '$metaTitle'
+                        },
+                        user: {
+                            $first: '$user'
+                        },
+                        summary: {
+                            $first: '$summary'
+                        },
+                        tags: {
+                            $push: '$tags'
+                        },
+                        subCategory: {
+                            $first: '$subCategory'
+                        },
+                        category: {
+                            $first: '$category'
+                        },
+                        support: {
+                            $first: '$support'
+                        }
+                    }
+                }, {
+                    $project: {
+                        title: 1,
+                        metaTitle: 1,
+                        'user._id': 1,
+                        'user.username': 1,
+                        'user.profile': 1,
+                        summary: 1,
+                        'tags._id': 1,
+                        'tags.name': 1,
+                        'subCategory._id': 1,
+                        'subCategory.subName': 1,
+                        'category._id': 1,
+                        'category.name': 1,
+                        'support.image': 1
+                    }
+                }, {
+                    $sort: {createdAt: -1}
+                },{
+                    $skip: (number * page) - number
+                }, {
+                    $limit: number * 1
+                }
+            ])
             return foundPosts
         } catch (err){
-            throw Api404Error('Api Error', STATUS_CODES.INTERNAL_ERROR, 'Cannot find posts')
+            return new BadRequestError('Cannot find posts')
         }
     }
 
@@ -37,7 +134,7 @@ class PostRepository{
             const countPosts = await PostModel.countDocuments()
             return countPosts
         }catch (err){
-            throw Api404Error('Api Error', STATUS_CODES.INTERNAL_ERROR, 'Cannot find count posts')
+            return new BadRequestError('Cannot find count posts')
         }
     }
 
@@ -46,7 +143,7 @@ class PostRepository{
             const foundNewestPosts = await PostModel.find().sort({createdAt: -1}).limit(number)
             return foundNewestPosts
         } catch(err) {
-            throw Api404Error('Api Error', STATUS_CODES.INTERNAL_ERROR, 'Cannot find newest posts')
+            return new BadRequestError('Cannot find newest posts')
         }
     }
 
@@ -55,7 +152,7 @@ class PostRepository{
             const foundPost = await PostModel.findById(postId)
             return foundPost
         } catch (err){
-            throw Api404Error('Api Error', STATUS_CODES.INTERNAL_ERROR, 'Cannot find post')
+            return new BadRequestError('Cannot find post')
         }
     }
 
@@ -64,7 +161,29 @@ class PostRepository{
             const deletedPost = await PostModel.findByIdAndDelete(postId)
             return deletedPost;
         } catch(err){
-            throw Api404Error('Api Error', STATUS_CODES.INTERNAL_ERROR, 'Cannot find and delete post')    
+            return new BadRequestError('Cannot find and delete post')    
+        }
+    }
+
+    async findPostsNumberByArchives() {
+        try {
+            const foundArchives = await PostModel.aggregate([
+                {
+                    $group: {
+                        _id: { $dateToString: { format: "%Y-%m", date: "$createdAt" } },
+                        postsCount: {$sum: 1}
+                    }
+                },
+                {
+                    $sort: {
+                        _id: -1
+                    }
+                }
+            ])
+            return foundArchives
+        } catch (err) {
+            console.log(err)
+            return new BadRequestError('Cannot find archives')
         }
     }
 }

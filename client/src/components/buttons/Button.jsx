@@ -2,8 +2,7 @@ import React from 'react'
 import './button.css'
 
 const Styles = [
-    "btn-none",
-    "btn-submit-auth"
+    "btn-none"
 ]
 
 const Sizes = [

@@ -6,4 +6,6 @@ module.exports = (app) => {
     app.post('/login', loginValidation, UserController.handleSignIn)
     app.post('/token', UserController.handleToken)
     app.delete('/logout', UserController.handleSignOut)
+    //Admin
+    app.post('/admin/user/create', UserController.handleCreate)
 }
